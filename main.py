@@ -14,8 +14,9 @@ def main_fedavg():
     #trainer.train_locally()
 
 def main_ifca():
-    config = TrainConfig('mnist', 'mlp', 'ifca')
+    config = TrainConfig('femnist', 'mlp', 'ifca')
     config.trainer_config['dynamic'] = False # whether migrate clients
+    config.trainer_config['num_rounds'] = 20
     trainer = IFCA(config)
     trainer.train()
     #trainer.train_locally()
@@ -30,14 +31,16 @@ def main_fesem():
 def main_flexcfl():
     config = TrainConfig('femnist', 'mlp', 'fedgroup')
     config.trainer_config['dynamic'] = True
+    config.trainer_config['num_rounds'] = 30
     config.trainer_config['shift_type'] = "all"
     config.trainer_config['swap_p'] = 0.05
     trainer = FedGroup(config)
     trainer.train()
 
-main_flexcfl()
-''' # Uncomment these codes as you need
-main_fedavg()
-main_fesem()
+
+''' # Uncomment these codes as you need '''
+
+# main_fedavg()
+# main_flexcfl()
+# main_fesem()
 main_ifca()
-'''

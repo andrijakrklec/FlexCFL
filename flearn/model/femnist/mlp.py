@@ -1,11 +1,11 @@
 import tensorflow as tf
-from tensorflow.keras.layers import Dense, Input, LeakyReLU
+from tensorflow.keras.layers import Dense, InputLayer, LeakyReLU
 from tensorflow.keras import Sequential
 
 def _construct_client_model(lr):
     model = Sequential()
     # Input Layer
-    model.add(Input(shape=(784,)))
+    model.add(InputLayer(input_shape=(784,)))
     # Hidden Layer
     model.add(Dense(512, 'relu', kernel_regularizer=tf.keras.regularizers.l2(0.001)))
     #model.add(Dense(512, kernel_regularizer=tf.keras.regularizers.l2(0.001)))
