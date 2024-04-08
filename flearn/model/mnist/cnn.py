@@ -1,11 +1,11 @@
 import tensorflow as tf
-from tensorflow.keras.layers import Dense, Input, Reshape, Conv2D, MaxPool2D, Flatten, Dropout
+from tensorflow.keras.layers import Dense, InputLayer, Reshape, Conv2D, MaxPool2D, Flatten, Dropout
 from tensorflow.keras import Sequential
 
 def _construct_client_model(lr):
     model = Sequential()
     # Input Layer
-    model.add(Input(shape=(784,)))
+    model.add(InputLayer(input_shape=(784,)))
     # Reshape Layer
     model.add(Reshape((28, 28, 1)))
     # Conv1 Layer
